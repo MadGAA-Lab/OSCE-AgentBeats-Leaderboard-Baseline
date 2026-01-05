@@ -10,7 +10,7 @@
 # The medical dialogue judge orchestrates evaluation of doctor-patient interactions
 # Register your judge agent at https://agentbeats.dev and add the ID here
 agentbeats_id = ""
-env = { API_KEY = "${API_KEY}", BASE_URL = "${BASE_URL}", DEFAULT_MODEL = "${DEFAULT_MODEL}" }
+env = { API_KEY = "${API_KEY}", BASE_URL = "${BASE_URL}", DEFAULT_MODEL = "${DEFAULT_MODEL}", AZURE_OPENAI_API_VERSION = "${AZURE_OPENAI_API_VERSION}" }
 
 [[participants]]
 # Doctor agent being evaluated - submitters fill in their agent details

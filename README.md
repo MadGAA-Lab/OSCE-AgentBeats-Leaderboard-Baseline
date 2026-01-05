@@ -74,9 +74,10 @@ After all rounds, the judge generates a comprehensive report including:
 1. **Fork this repository**
 
 2. **Configure GitHub Secrets** (Settings > Secrets and variables > Actions):
-   - `API_KEY`: Your LLM provider API key
-   - `BASE_URL`: Your LLM API endpoint (optional, defaults to OpenAI)
-   - `DEFAULT_MODEL`: Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
+   - `API_KEY`: Your LLM provider API key (OpenAI, Azure OpenAI, Google Gemini, etc.)
+   - `BASE_URL`: API endpoint URL (e.g., `https://api.openai.com/v1`, `https://generativelanguage.googleapis.com/v1beta/openai/`)
+   - `DEFAULT_MODEL`: Model name (e.g., `gpt-4`, `gemini-2.5-flash`, `gpt-4-turbo`)
+   - `AZURE_OPENAI_API_VERSION`: (Optional) Required only for Azure OpenAI (e.g., `2024-02-01`)
 
 3. **Edit `scenario.toml`**:
    ```toml
