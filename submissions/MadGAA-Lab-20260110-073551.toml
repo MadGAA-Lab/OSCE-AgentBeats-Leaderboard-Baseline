@@ -1,0 +1,62 @@
+# Medical Dialogue Evaluation Scenario Configuration
+# 
+# This scenario evaluates doctor agents' ability to persuade patients
+# to accept surgical treatment across diverse patient personas.
+#
+# Patient Personas: 16 MBTI types × 2 medical cases = 32 base combinations
+# With optional gender: 16 × 2 × 2 = 64 combinations
+
+[green_agent]
+# The medical dialogue judge orchestrates evaluation of doctor-patient interactions
+# Register your judge agent at https://agentbeats.dev and add the ID here
+agentbeats_id = "019b8d9f-c98d-7191-a486-38f3247697f3"
+# Optional per-agent overrides: 
+# - PATIENT_API_KEY, 
+# - PATIENT_BASE_URL, 
+# - PATIENT_MODEL, 
+# - PATIENT_AZURE_API_VERSION,
+# - JUDGE_API_KEY, 
+# - JUDGE_BASE_URL, 
+# - JUDGE_MODEL, 
+# - JUDGE_AZURE_API_VERSION
+env = { API_KEY = "${API_KEY}", BASE_URL = "${BASE_URL}", DEFAULT_MODEL = "${DEFAULT_MODEL}", AZURE_OPENAI_API_VERSION = "${AZURE_OPENAI_API_VERSION}", PATIENT_API_KEY = "${PATIENT_API_KEY}", PATIENT_BASE_URL = "${PATIENT_BASE_URL}", PATIENT_MODEL = "${PATIENT_MODEL}", PATIENT_AZURE_API_VERSION = "${PATIENT_AZURE_API_VERSION}", JUDGE_API_KEY = "${JUDGE_API_KEY}", JUDGE_BASE_URL = "${JUDGE_BASE_URL}", JUDGE_MODEL = "${JUDGE_MODEL}", JUDGE_AZURE_API_VERSION = "${JUDGE_AZURE_API_VERSION}" }
+
+[[participants]]
+# Doctor agent being evaluated - submitters fill in their agent details
+name = "doctor"
+agentbeats_id = "019b8d97-18dc-7a10-bbf0-22ffc3f8e30e"
+env = { DOCTOR_API_KEY = "${DOCTOR_API_KEY}", DOCTOR_BASE_URL = "${DOCTOR_BASE_URL}", DOCTOR_MODEL = "${DOCTOR_MODEL}", DOCTOR_AZURE_API_VERSION = "" }
+
+[config]
+# Persona IDs to evaluate
+# 
+# Format with gender: {MBTI}_{GENDER}_{CASE}
+# Format without gender: {MBTI}_{CASE} (gender will be randomly generated)
+# 
+# - MBTI: INTJ, INTP, ENTJ, ENTP, INFJ, INFP, ENFJ, ENFP, ISTJ, ISFJ, ESTJ, ESFJ, ISTP, ISFP, ESTP, ESFP
+# - Gender (optional): M (male), F (female)
+# - Case: PNEUMO (pneumothorax), LUNG (lung_cancer)
+# 
+# Examples:
+#   persona_ids = ["INTJ_M_PNEUMO"]  # Evaluate single persona with gender
+#   persona_ids = ["INTJ_PNEUMO"]  # Evaluate single persona, gender randomly generated
+#   persona_ids = ["INTJ_M_PNEUMO", "ESFP_F_LUNG"]  # Evaluate specific personas
+#   persona_ids = ["all"]  # Evaluate all 64 personas with gender (takes time!)
+#   persona_ids = ["all_no_gender"]  # Evaluate all 32 personas without gender
+#   persona_ids = ["random"]  # Randomly select MBTI, gender, and case each run
+#   persona_ids = ["random_no_gender"]  # Randomly select MBTI and case (gender generated)
+
+persona_ids = ["random"]
+
+# Maximum dialogue rounds per persona
+max_rounds = 10
+
+# Retry configuration for LLM API calls
+[config.retry]
+# Patient agent retry settings (uses fallback messages on failure)
+patient_max_retries = 5
+patient_retry_delay = 2  # seconds
+
+# Judge components retry settings (raises error on failure - cannot fake evaluation data)
+judge_max_retries = 5
+judge_retry_delay = 3  # seconds
