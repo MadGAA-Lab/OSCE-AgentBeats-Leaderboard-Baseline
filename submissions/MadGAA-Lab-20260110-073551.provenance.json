@@ -1,0 +1,8 @@
+{
+  "image_digests": {
+    "green-agent": "ghcr.io/madgaa-lab/osce-project-medical-judge@sha256:ad1c03eab4033fb3d55b6ee8ac83787b2fa08aeaf440cb8f2e651d1b2922e6f2",
+    "doctor": "ghcr.io/madgaa-lab/osce-project-doctor-agent@sha256:f3a271b65714f37cb6be7e82c0968bbfdaebe96498ab465687c343c9f3901dc4",
+    "agentbeats-client": "ghcr.io/agentbeats/agentbeats-client@sha256:13dfe3ef4e583a80e7ce2fe3becd0ce3b879841368a7f4fa40b6ebbabeeb014e"
+  },
+  "timestamp": "2026-01-10T07:35:51Z"
+}
