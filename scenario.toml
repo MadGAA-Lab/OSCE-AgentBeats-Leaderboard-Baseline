@@ -46,7 +46,8 @@ env = {}
 #   persona_ids = ["random"]  # Randomly select MBTI, gender, and case each run
 #   persona_ids = ["random_no_gender"]  # Randomly select MBTI and case (gender generated)
 
-persona_ids = ["all"]
+# Note: To avoid exceeding run time limits (6 hrs in GitHub Actions), we recommend using "all_no_gender" for submissions. 
+persona_ids = ["all_no_gender"]
 
 # Maximum dialogue rounds per persona
 max_rounds = 10
