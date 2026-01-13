@@ -46,7 +46,7 @@ env = { DOCTOR_API_KEY = "${DOCTOR_API_KEY}", DOCTOR_BASE_URL = "${DOCTOR_BASE_U
 #   persona_ids = ["random"]  # Randomly select MBTI, gender, and case each run
 #   persona_ids = ["random_no_gender"]  # Randomly select MBTI and case (gender generated)
 
-persona_ids = ["random"]
+persona_ids = ["all"]
 
 # Maximum dialogue rounds per persona
 max_rounds = 10
