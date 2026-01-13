@@ -1,3 +1,7 @@
 [submodule "reference/OSCE-Project"]
 	path = reference/OSCE-Project
 	url = https://github.com/MadGAA-Lab/OSCE-Project.git
+
+[submodule "reference/agentbeats"]
+	path = reference/agentbeats
+	url = https://github.com/agentbeats/agentbeats.git

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Overall Performance",
+    "query": "SELECT results.participants.doctor AS id, res.detail.mean_aggregate_score AS score, res.detail.timestamp AS timestamp FROM results CROSS JOIN UNNEST(results.results) AS r(res) ORDER BY score DESC"
+  },
+  {
+    "name": "Empathy Rankings",
+    "query": "SELECT results.participants.doctor AS id, AVG(rep.overall_empathy) AS empathy_score, COUNT(*) AS sessions FROM results CROSS JOIN UNNEST(results.results) AS r(res) CROSS JOIN UNNEST(res.detail.reports) AS rp(rep) WHERE rep.overall_empathy IS NOT NULL GROUP BY id ORDER BY empathy_score DESC"
+  },
+  {
+    "name": "Persuasion Rankings",
+    "query": "SELECT results.participants.doctor AS id, AVG(rep.overall_persuasion) AS persuasion_score, COUNT(*) AS sessions FROM results CROSS JOIN UNNEST(results.results) AS r(res) CROSS JOIN UNNEST(res.detail.reports) AS rp(rep) WHERE rep.overall_persuasion IS NOT NULL GROUP BY id ORDER BY persuasion_score DESC"
+  },
+  {
+    "name": "Safety Rankings",
+    "query": "SELECT results.participants.doctor AS id, AVG(rep.overall_safety) AS safety_score, COUNT(*) AS sessions FROM results CROSS JOIN UNNEST(results.results) AS r(res) CROSS JOIN UNNEST(res.detail.reports) AS rp(rep) WHERE rep.overall_safety IS NOT NULL GROUP BY id ORDER BY safety_score DESC"
+  },
+  {
+    "name": "Success Rate",
+    "query": "SELECT results.participants.doctor AS id, ROUND(SUM(CASE WHEN sess.final_outcome = 'patient_accepted' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS success_rate, COUNT(*) AS total_sessions FROM results CROSS JOIN UNNEST(results.results) AS r(res) CROSS JOIN UNNEST(res.detail.sessions) AS s(sess) GROUP BY id ORDER BY success_rate DESC"
+  },
+  {
+    "name": "Recent Submissions",
+    "query": "SELECT results.participants.doctor AS id, res.detail.mean_aggregate_score AS score, res.detail.timestamp AS timestamp FROM results CROSS JOIN UNNEST(results.results) AS r(res) ORDER BY timestamp DESC LIMIT 10"
+  }
+]

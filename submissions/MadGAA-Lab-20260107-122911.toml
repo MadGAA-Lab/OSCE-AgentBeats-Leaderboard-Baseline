@@ -25,7 +25,7 @@ env = { API_KEY = "${API_KEY}", BASE_URL = "${BASE_URL}", DEFAULT_MODEL = "${DEF
 # Doctor agent being evaluated - submitters fill in their agent details
 name = "doctor"
 agentbeats_id = "019b8d97-18dc-7a10-bbf0-22ffc3f8e30e"
-env = { DOCTOR_API_KEY = "${DOCTOR_API_KEY}", DOCTOR_BASE_URL = "${DOCTOR_BASE_URL}", DOCTOR_MODEL = "${DOCTOR_MODEL}", DOCTOR_AZURE_API_VERSION = "" }
+env = { DOCTOR_API_KEY = "${API_KEY}", DOCTOR_BASE_URL = "${BASE_URL}", DOCTOR_MODEL = "${DEFAULT_MODEL}", DOCTOR_AZURE_API_VERSION = "" }
 
 [config]
 # Persona IDs to evaluate
@@ -46,8 +46,7 @@ env = { DOCTOR_API_KEY = "${DOCTOR_API_KEY}", DOCTOR_BASE_URL = "${DOCTOR_BASE_U
 #   persona_ids = ["random"]  # Randomly select MBTI, gender, and case each run
 #   persona_ids = ["random_no_gender"]  # Randomly select MBTI and case (gender generated)
 
-# Note: To avoid exceeding run time limits (6 hrs in GitHub Actions), we recommend using "all_no_gender" for submissions. 
-persona_ids = ["all_no_gender"]
+persona_ids = ["random"]
 
 # Maximum dialogue rounds per persona
 max_rounds = 10
