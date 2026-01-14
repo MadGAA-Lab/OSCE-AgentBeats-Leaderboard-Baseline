@@ -26,6 +26,7 @@ env = { API_KEY = "${API_KEY}", BASE_URL = "${BASE_URL}", DEFAULT_MODEL = "${DEF
 name = "doctor"
 agentbeats_id = "019b8d97-18dc-7a10-bbf0-22ffc3f8e30e"
 env = { DOCTOR_API_KEY = "${DOCTOR_API_KEY}", DOCTOR_BASE_URL = "${DOCTOR_BASE_URL}", DOCTOR_MODEL = "${DOCTOR_MODEL}", DOCTOR_AZURE_API_VERSION = "" }
+# Second Run for testing consistency
 
 [config]
 # Persona IDs to evaluate
